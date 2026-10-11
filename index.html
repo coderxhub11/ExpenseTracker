@@ -1,0 +1,134 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PennyWise | Expense Tracker</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <aside class="sidebar">
+    <h2><span>₹</span> PennyWise</h2>
+    <p class="label">MENU</p>
+    <button class="nav active" data-page="dashboard">▦ Dashboard</button>
+    <button class="nav" data-page="transactions">↔ Transactions</button>
+    <div class="side-bottom">Personal Finance Manager</div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">PERSONAL FINANCE / OVERVIEW</p>
+        <h1 id="pageTitle">Dashboard</h1>
+      </div>
+      <span id="today" class="date"></span>
+    </header>
+
+    <section id="dashboard">
+      <div class="welcome">
+        <div>
+          <p>WELCOME TO PENNYWISE</p>
+          <h2>Take control of your money.</h2>
+          <span>Track your income, manage expenses and save smarter.</span>
+        </div>
+        <div class="rupee">₹</div>
+      </div>
+
+      <div class="stats">
+        <article class="stat total">
+          <p>Total Balance</p>
+          <h2 id="balance">₹0</h2>
+          <small>Income minus expenses</small>
+        </article>
+        <article class="stat">
+          <p>Total Income</p>
+          <h2 id="income">₹0</h2>
+          <small>Money received</small>
+        </article>
+        <article class="stat">
+          <p>Total Expenses</p>
+          <h2 id="expenses">₹0</h2>
+          <small>Money spent</small>
+        </article>
+      </div>
+
+      <div class="columns">
+        <section class="panel">
+          <h3>Income vs Expenses</h3>
+          <p class="muted">Your overall money overview</p>
+          <div class="legend">
+            <span>🟢 Income</span><span>🟠 Expenses</span>
+          </div>
+          <div class="chart">
+            <div class="bar-group">
+              <div class="bar green" id="incomeBar"></div>
+              <b>Income</b><small id="incomeValue">₹0</small>
+            </div>
+            <div class="bar-group">
+              <div class="bar orange" id="expenseBar"></div>
+              <b>Expenses</b><small id="expenseValue">₹0</small>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel">
+          <h3>Add Transaction</h3>
+          <p class="muted">Record your income or expenses</p>
+          <form id="expenseForm">
+            <div class="switch">
+              <button type="button" class="kind selected" data-kind="expense">− Expense</button>
+              <button type="button" class="kind" data-kind="income">+ Income</button>
+            </div>
+            <label>Amount (₹)
+              <input id="amount" type="number" min="0.01" step="0.01" placeholder="Enter amount" required>
+            </label>
+            <label>Category
+              <select id="category">
+                <option>Food</option>
+                <option>Transport</option>
+                <option>Shopping</option>
+                <option>Bills</option>
+                <option>Education</option>
+                <option>Salary</option>
+                <option>Freelance</option>
+                <option>Entertainment</option>
+                <option>Health</option>
+                <option>Other</option>
+              </select>
+            </label>
+            <label>Date
+              <input id="date" type="date" required>
+            </label>
+            <label>Description
+              <input id="description" maxlength="100" placeholder="e.g. Lunch or salary">
+            </label>
+            <button class="primary" type="submit">+ Add Transaction</button>
+            <p id="message" class="message"></p>
+          </form>
+        </section>
+      </div>
+
+      <section class="panel">
+        <div class="panel-title">
+          <div><h3>Recent Transactions</h3><p class="muted">Your latest activity</p></div>
+          <button id="viewAll" class="link-btn">View all →</button>
+        </div>
+        <div id="recentList"></div>
+      </section>
+    </section>
+
+    <section id="transactionsPage" class="hidden">
+      <section class="panel">
+        <h3>All Transactions</h3>
+        <p class="muted">Search and manage your transactions</p>
+        <input id="search" type="search" placeholder="Search transactions...">
+        <div id="allList"></div>
+      </section>
+    </section>
+
+    <footer>PennyWise © 2026 · Spend wisely. Save happily.</footer>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
